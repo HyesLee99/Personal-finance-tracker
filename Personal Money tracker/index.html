@@ -4,11 +4,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="index.js"></script>
     <title>Personal Finance Tracking</title>
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
     <nav>
+        <input type="checkbox" id="check" class="checkbtn" />
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
         <label class="logo"> FinanceU </label>
         <ul>
             <li><a href="#">Home</a></li>
@@ -31,21 +37,66 @@
             <h2>$1 = $number</h2>
         </div>
     </div>
-    <div id="adding">
-        <div id="income">
-            <h2>Enter income</h2>
-            <form>
-                <label for="Title">Title: </label>
-                <input type="text" id="income-title" name="income-title"><br>
-                <label for="Amount">Amount: </label>
-                <input type="number" id="income-amount" name="income-title">
-                <label for="Currency">Currency: </label>
-            </form>
-        </div>
-        <div id="spending">
-            <h2>Enter spending</h2>
-        </div>
+    <div class="container">
+        <button class="btn btn1" >Add Income</button>
+        <button class="btn btn2">Add Spending</button>
     </div>
+    <div id="adding">
+
+        <div id="addi">
+            <h2>Enter income</h2>
+            <div class="form">
+                <div class="input_field">
+                    <label for="Title">Title: </label>
+                    <input type="text" id="income-title" name="income-title"><br>
+                </div>
+                <div class="input_field">
+                    <label for="Amount">Amount: </label>
+                    <input type="number" id="income-amount" name="income-title">
+                </div>
+                <div class="input_field">
+                    <label for="Date">Date: </label>
+                    <input type="date" id="income-date" name="income-date"><br>
+                </div>
+                <div class="input_field">
+                    <label for="Currency">Currency: </label>
+                    <div class="custom_select">
+                        <select>
+                            <option value="">Select</option>
+                            <!--add with fetching -->
+                        </select>
+                    </div>
+                </div>
+                <button class="btn addbtn">Add</button>
+            </div>
+        </div>
+        <div id="adds">
+            <h2>Enter spending</h2>
+            <div class="form">
+                <div class="input_field">
+                    <label for="Title">Title: </label>
+                    <input type="text" id="income-title" name="income-title"><br>
+                </div>
+                <div class="input_field">
+                    <label for="Amount">Amount: </label>
+                    <input type="number" id="income-amount" name="income-title">
+                </div>
+                <div class="input_field">
+                    <label for="Date">Date: </label>
+                    <input type="date" id="income-date" name="income-date"><br>
+                </div>
+                <div class="input_field">
+                    <label for="Currency">Currency: </label>
+                    <div class="custom_select">
+                        <select>
+                            <option value="">Select</option>
+                            <!--add with fetching -->
+                        </select>
+                    </div>
+                </div>
+                <button class="btn addbtn">Add</button>
+            </div>
+        </div>
 
 </body>
 </html>
