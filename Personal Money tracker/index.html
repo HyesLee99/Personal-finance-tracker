@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
-
+<!--The website is using data api from https://github.com/benmajor/ExchangeRatesAPI-->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js"></script>
     <title>Personal Finance Tracking</title>
     <link rel="stylesheet" href="index.css" />
@@ -38,70 +39,131 @@
         </div>
     </div>
     <div class="container">
-        <button class="btn btn1" >Add Income</button>
+        <button class="btn btn1">Add Income</button>
         <button class="btn btn2">Add Spending</button>
     </div>
-
-    <div id="addi">
-        <h2>Enter income</h2>
-        <div class="form">
-            <div class="input_field">
-                <label for="Title">Title: </label>
-                <input type="text" id="income-title" name="income-title"><br>
-            </div>
-            <div class="input_field">
-                <label for="Amount">Amount: </label>
-                <input type="number" id="income-amount" name="income-title">
-            </div>
-            <div class="input_field">
-                <label for="Date">Date: </label>
-                <input type="date" id="income-date" name="income-date"><br>
-            </div>
-            <div class="input_field">
-                <label for="Currency">Currency: </label>
-                <div class="custom_select">
-                    <select class="currency-select">
-                        <option value="test1">test1</option>
-                        <option value="test2">test2</option>
-                        <option value="test3">test3</option>
-                        <option value="test4">test4</option>
-
-                        <!--add with fetching -->
-                    </select>
+    <div class="forms">
+        <div id="addi">
+            <h2>Enter income</h2>
+            <div class="form">
+                <div class="input_field">
+                    <label for="Title">Title: </label>
+                    <input type="text" id="income-title" name="income-title"><br>
                 </div>
+                <div class="input_field">
+                    <label for="Amount">Amount: </label>
+                    <input type="number" id="income-amount" name="income-title">
+                </div>
+                <div class="input_field">
+                    <label for="Date">Date: </label>
+                    <input type="date" id="income-date" name="income-date"><br>
+                </div>
+                <div class="input_field">
+                    <label for="Currency">Currency: </label>
+                    <div class="custom_select">
+                        <select class="currency-select">
+                            <option value="AUD">Autralian Dollar</option>
+                            <option value="BRL">Brazilian Real</option>
+                            <option value="GBP">British Pound Sterline</option>
+                            <option value="BGN">Bulgarian Lev</option>
+                            <option value="CAD">Canadian Dollar</option>
+                            <option value="CNY">Chinese Yuan Renminbi</option>
+                            <option value="HRK">Croatian Kuna</option>
+                            <option value="CZK">Czech Koruna</option>
+                            <option value="DKK">Danish Krone</option>
+                            <option value="EUR">Euro</option>
+                            <option value="HKD">Hong Kong Dollar</option>
+                            <option value="HUF">Hungarian Forint</option>
+                            <option value="ISK">Icelandic Krona</option>
+                            <option value="IDR">Indonesian Rupiah</option>
+                            <option value="INR">Indian Rupee</option>
+                            <option value="ILS">Isaraeli Shekel</option>
+                            <option value="JPY">Japanese Yen</option>
+                            <option value="MYR">Malaysian Ringgit</option>
+                            <option value="MXN">Mexican Peso</option>
+                            <option value="NZD">New Zealand Dollar</option>
+                            <option value="NOK">Norwegian Krone</option>
+                            <option value="PHP">Philippine Peso</option>
+                            <option value="PLN">Polish Zloty</option>
+                            <option value="RON">Romanian Leu</option>
+                            <option value="RUB">Russian Rouble</option>
+                            <option value="SGD">Singapore Dollar</option>
+                            <option value="ZAR">South African Rand</option>
+                            <option value="KRW">South Korean Won</option>
+                            <option value="SEK">Swedish Krona</option>
+                            <option value="CHF">Swis Franc</option>
+                            <option value="THB">Thai Baht</option>
+                            <option value="TRY">Turkish Lira</option>
+                            <option value="USD">US dollar</option>
+                            <!--add with fetching -->
+                        </select>
+                    </div>
+                </div>
+                <button class="btn addbtn">Add</button>
+                <button class="btn add-close">Close</button>
             </div>
-            <button class="btn addbtn">Add</button>
         </div>
-    </div>
-    <div id="adds">
-        <h2>Enter spending</h2>
-        <div class="form">
-            <div class="input_field">
-                <label for="Title">Title: </label>
-                <input type="text" id="spending-title" name="income-title"><br>
+        <div id="adds">
+            <div class="heading">
+                <h2>Enter spending</h2>
             </div>
-            <div class="input_field">
-                <label for="Amount">Amount: </label>
-                <input type="number" id="spending-amount" name="income-title">
-            </div>
-            <div class="input_field">
-                <label for="Date">Date: </label>
-                <input type="date" id="spending-date" name="spending-date"><br>
-            </div>
-            <div class="input_field">
-                <label for="Currency">Currency: </label>
-                <div class="custom_select">
-                    <select class="currency-select">
-                        <option value="test1">test1</option>
-                        <option value="test2">test2</option>
-                        <option value="test3">test3</option>
-                        <option value="test4">test4</option>
-
-                        <!--add with fetching -->
-                    </select>
+            <div class="form">
+                <div class="input_field">
+                    <label for="Title">Title: </label>
+                    <input type="text" id="spending-title" name="income-title"><br>
                 </div>
+                <div class="input_field">
+                    <label for="Amount">Amount: </label>
+                    <input type="number" id="spending-amount" name="income-title">
+                </div>
+                <div class="input_field">
+                    <label for="Date">Date: </label>
+                    <input type="date" id="spending-date" name="spending-date"><br>
+                </div>
+                <div class="input_field">
+                    <label for="Currency">Currency: </label>
+                    <div class="custom_select">
+                        <select class="currency-select">
+                            <option value="AUD">Autralian Dollar</option>
+                            <option value="BRL">Brazilian Real</option>
+                            <option value="GBP">British Pound Sterline</option>
+                            <option value="BGN">Bulgarian Lev</option>
+                            <option value="CAD">Canadian Dollar</option>
+                            <option value="CNY">Chinese Yuan Renminbi</option>
+                            <option value="HRK">Croatian Kuna</option>
+                            <option value="CZK">Czech Koruna</option>
+                            <option value="DKK">Danish Krone</option>
+                            <option value="EUR">Euro</option>
+                            <option value="HKD">Hong Kong Dollar</option>
+                            <option value="HUF">Hungarian Forint</option>
+                            <option value="ISK">Icelandic Krona</option>
+                            <option value="IDR">Indonesian Rupiah</option>
+                            <option value="INR">Indian Rupee</option>
+                            <option value="ILS">Isaraeli Shekel</option>
+                            <option value="JPY">Japanese Yen</option>
+                            <option value="MYR">Malaysian Ringgit</option>
+                            <option value="MXN">Mexican Peso</option>
+                            <option value="NZD">New Zealand Dollar</option>
+                            <option value="NOK">Norwegian Krone</option>
+                            <option value="PHP">Philippine Peso</option>
+                            <option value="PLN">Polish Zloty</option>
+                            <option value="RON">Romanian Leu</option>
+                            <option value="RUB">Russian Rouble</option>
+                            <option value="SGD">Singapore Dollar</option>
+                            <option value="ZAR">South African Rand</option>
+                            <option value="KRW">South Korean Won</option>
+                            <option value="SEK">Swedish Krona</option>
+                            <option value="CHF">Swis Franc</option>
+                            <option value="THB">Thai Baht</option>
+                            <option value="TRY">Turkish Lira</option>
+                            <option value="USD">US dollar</option>
+
+                        </select>
+                    </div>
+                </div>
+                <button class="btn addbtn">Add</button>
+                <button class="btn spend-close">Close</button>
             </div>
-            <button class="btn addbtn">Add</button>
         </div>
     </div>
     <table class="content-table">
@@ -121,6 +183,7 @@
                 <th>hi</th>
                 <th>hi</th>
                 <th>hi</th>
+
             </tr>
         </tbody>
     </table>
