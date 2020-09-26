@@ -19,7 +19,7 @@ body {
     justify-content: center;
     
 }
-#income, #spending, #currency, #addi, #adds {
+#input, #income_total, #spending_total, #currency_base, #input_box, #adds {
     border: 3px solid black;
     width: 150px;
     height: 150px;
@@ -29,7 +29,7 @@ body {
     padding: 50px;
 }
 
-#addi, #adds {
+#input_box, #adds {
     text-align: center;
     display: none;
 }
@@ -208,7 +208,7 @@ a.active, a:hover {
 
 
 /*gotten help from https://www.youtube.com/watch?v=p9qBEq-YRSc*/
-#addi, #adds {
+#input_box, #adds {
     max-width: 300px;
     max-height: 500px;
     width: 100%;
@@ -219,29 +219,29 @@ a.active, a:hover {
     border: none;
 }
 
-#addi > h2, #adds > h2 {
+#input_box> h2, #adds > h2 {
     margin-bottom: 10px;
     text-align: center;
 }
 
-#addi .form, #adds .form {
+#input_box .form, #adds .form {
     width: 100%;    
 }
 
-#addi .form .input_field, #adds .form .input_field {
+#input_box .form .input_field, #adds .form .input_field {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
 }
 
-#addi .form .input_field label, #adds .form .input_field label {
+#input_box .form .input_field label, #adds .form .input_field label {
     width: 100px;
     color: #757575;
     margin-right: 10px;
     font-size: 14px;
 }
 
-#addi .form .input_field .input, #adds .form .input_field .input {
+#input_box .form .input_field .input, #adds .form .input_field .input {
     width: 100%;
     outline: none;
     border: 1px solid #d4dbd9;
@@ -297,4 +297,9 @@ a.active, a:hover {
     justify-content: space-between;
 }
 
+.total_amount{
+    position: relative;
+    top: 50%;
+
+}
 

@@ -17,29 +17,27 @@
 
     // Ask the income (title, amount, date)
     function askForIncome() {
-        var box = $("addi");
+        var box = $("input_box");
         box.style.display = "block";
+        let title = $("income_or_spending");
+        title.innerText = "Enter Income";
         qs(".addbtn").addEventListener("click", getCurrency);
-        qs(".add-close").addEventListener("click", closingIncome);
+        qs(".add-close").addEventListener("click", closingInput);
     }
 
     // Ask the spending (title, amount, date)
     function askForSpending() {
-        var box = $("adds");
+        var box = $("input_box");
         box.style.display = "block";
-        qsa(".addbtn")[1].addEventListener("click", addSpending);
-        qs(".spend-close").addEventListener("click", closingSpend);
+        let title = $("income_or_spending");
+        title.innerText = "Enter Spending";
+        qs(".addbtn").addEventListener("click", getCurrency);
+        qs(".add-close").addEventListener("click", closingInput);
     }
 
     // closing button for income
-    function closingIncome() {
-        var box = $("addi");
-        box.style.display = "none";
-    }
-
-    // closing button for spending
-    function closingSpend() {
-        var box = $("adds");
+    function closingInput() {
+        var box = $("input_box");
         box.style.display = "none";
     }
 
@@ -48,7 +46,7 @@
     function getCurrency() {
         let currencyDom = qs(".currency-select");
         CURRENCY = currencyDom.options[currencyDom.selectedIndex].value;
-        let date = $("income-date").value;
+        let date = $("input-date").value;
         let urlValue = URL + "/" + date + "?base=" + BASE;
         console.log(urlValue);
         request.open('GET', urlValue, true)
@@ -64,13 +62,12 @@
                     let currencyList = data.rates;
                     for (let key in currencyList) {
                         if (key == CURRENCY) {
-                            console.log("found the currency rate!");
-                            addIncome(currencyList[key]);
+                            addInput(currencyList[key]);
                             flag = true; 
                         }
                     }
                     if (!flag) {
-                        alert("currency not found! ");
+                        alert("Error: currency not found! ");
                     }
                     
                 } 
@@ -79,31 +76,22 @@
         }
     }
 
-    function testing() {
-        console.log(currencyList[i] + "is not currency that I am looking for, " + CURRENCY);
-        if (CURRENCY == currencyList[i]) {
-            let rate = currencyList[i].CURRENCY;
-            addIncome(rate);
-            console.log("successfully added! " + rate);
-        }
-    }
-
     // Add the income to the chart and convert the amount by the 
     // "Base" currency of the date. 
-    function addIncome(rate) {  
+    function addInput(rate) {  
         let oneRow = document.createElement("tr");
         let dateBox = document.createElement("th");
         let titleBox = document.createElement("th");
         let amountBox = document.createElement("th");
         let currencyBox = document.createElement("th");
         let category = document.createElement("th");
-        let date = $("income-date").value;
-        let title = $("income-title").value;
-        let amount = $("income-amount").value;
+        let date = $("input-date").value;
+        let title = $("input-title").value;
+        let amount = $("input-amount").value;
         dateBox.innerText = date;
         titleBox.innerText = title;
-        amountBox.innerText = Math.round(amount / rate * 100) / 100;
-        category.innerText = "Income";  
+        let amountWithBase = Math.round(amount / rate * 100) / 100;
+        
         currencyBox.innerText = CURRENCY;
         oneRow.appendChild(dateBox);
         oneRow.appendChild(titleBox);
@@ -111,38 +99,35 @@
         oneRow.appendChild(currencyBox);
         oneRow.appendChild(category);
         qs(".table-body").appendChild(oneRow);
+        if ($("income_or_spending").innerText == "Enter Income") {
+            category.innerText = "Income";
+            amountBox.innerText = amountWithBase;
+            amountBox.className = "income";
+            total('income');
+        } else {
+            category.innerText = "Spending"
+            amountBox.innerText = -1 * amountWithBase;
+            amountBox.className = "spending";
+            total('spending');
+        }
     }
 
-    // Add the spending to the chart and convert the amount by the 
-    // "Base" currency of the date.
-    function addSpending() {
-        let oneRow = document.createElement("tr");
-        let dateBox = document.createElement("th");
-        let titleBox = document.createElement("th");
-        let amountBox = document.createElement("th");
-        let currencyBox = document.createElement("th");
-        let category = document.createElement("th");
-        let date = $("spending-date").value;
-        let title = $("spending-title").value;
-        let amount = $("spending-amount").value;
-        let currencyDom = qsa(".currency-select")[1];
-        let currency = currencyDom.options[currencyDom.selectedIndex].text;
-        dateBox.innerText = date;
-        titleBox.innerText = title;
-        amountBox.innerText = amount;
-        category.innerText = "Spending";
-        currencyBox.innerText = currency;
-        oneRow.appendChild(dateBox);
-        oneRow.appendChild(titleBox);
-        oneRow.appendChild(amountBox);
-        oneRow.appendChild(currencyBox);
-        oneRow.appendChild(category);
-        qs(".table-body").appendChild(oneRow);
-    }
+    /**
+     * Add every income or spending.
+     * @param {String} input - String that represents whether the total should be income or spending
+     */
+    function total(input) {
+        let list = qsa('.' + input);
+        console.log(input);
+        let total = 0;
+        for (let i = 0; i < list.length; i++) {
+            console.log("adding to total");
+            console.log(list[i].innerText);
+            total += eval(list[i].innerText);
 
-    // for test purpose! 
-    function myFunction() {
-        alert("Hi");
+        }
+        let totalBox = qsa('#' + input + '_total h2');
+        totalBox[1].innerText = total;
     }
 
     // check status of the returned data
