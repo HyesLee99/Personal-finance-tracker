@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="index.js"></script>
     <title>Personal Finance Tracking</title>
     <link rel="stylesheet" href="index.css" />
@@ -17,22 +18,14 @@
             <i class="fas fa-bars"></i>
         </label>
         <label class="logo"> FinanceU </label>
+        <!----
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Add</a></li>
             <li><a href="#">Graph</a></li>
-            <li>log-out</li>
-        </ul>
+        </ul>-->
     </nav> <br />
-    <form class="box" action="index.html" method="post">
-        <h1>Login</h1>
-        <input type="text" name="" placeholder="Username">
-        <input type="password" name="" placeholder="Password">
-        <input type="submit" name="" value="login">
-    </form>
     <div id="summary">
         <div id="income_total">
-            <h2>Total income</h2>
+            <h2>Total </br> income</h2>
             <h2 class="total_amount">0</h2>
         </div>
         <div id="spending_total">
@@ -43,6 +36,7 @@
             <h2>Base Currency</h2>
             <div class="custom_select total_amount">
                 <select class="base_currency">
+                    <option value="USD">US dollar</option>
                     <option value="AUD">Autralian Dollar</option>
                     <option value="BRL">Brazilian Real</option>
                     <option value="GBP">British Pound Sterline</option>
@@ -75,12 +69,10 @@
                     <option value="CHF">Swis Franc</option>
                     <option value="THB">Thai Baht</option>
                     <option value="TRY">Turkish Lira</option>
-                    <option value="USD">US dollar</option>
                 </select>
+                <button id="changebtn">Change</button>
             </div>
-            <div>
-                <button id ="changebtn" class="btn">Change</button>
-            </div>
+            
         </div>
     </div>
     <div class="container">
@@ -88,8 +80,11 @@
         <button class="btn btn2">Add Spending</button>
     </div>
     <!--input form start -->
-    <div class="forms">
+    <div class="forms" id="forms-container">
         <div id="input_box">
+            <a>
+                <i id="close" class="fa-solid fa-xmark close-btn"></i>
+            </a>
             <h2 id="income_or_spending"></h2>
             <div class="form">
                 <div class="input_field">
@@ -108,6 +103,7 @@
                     <label for="Currency">Currency: </label>
                     <div class="custom_select">
                         <select class="currency-select">
+                            <option value="USD">US dollar</option>
                             <option value="AUD">Autralian Dollar</option>
                             <option value="BRL">Brazilian Real</option>
                             <option value="GBP">British Pound Sterline</option>
@@ -140,8 +136,6 @@
                             <option value="CHF">Swis Franc</option>
                             <option value="THB">Thai Baht</option>
                             <option value="TRY">Turkish Lira</option>
-                            <option value="USD">US dollar</option>
-                            <!--add with fetching -->
                         </select>
                     </div>
                 </div>
@@ -152,15 +146,24 @@
     <table class="content-table">
         <thead>
             <tr>
-                <th>Date</th>
+                <th>Date&ensp;<i class="fa-solid fa-down-long" id="down-arrow"></i> <i class="fa-solid fa-up-long" id="up-arrow"></i></th>
+                
                 <th>Title</th>
-                <th class="current_base">Amount</th>
+                <th class="current_base" id="amount-in"> </th>
                 <th>Paid in... </th>
                 <th>Category</th>
+                <th><input  id="select-all" type="checkbox"></input></th>
             </tr>
         </thead>
         <tbody class="table-body">
         </tbody>
     </table>
+    <div  class="container" id="outer-container">
+        <div id="bottom-buttons">
+            <button style="visibility:hidden" > this one</button>
+            <a class="btn btn1" id="csv">Download CSV</a>
+            <button class="btn btn1" id="delete">Delete</button>
+        </div>
+    </div>
 </body>
 </html>

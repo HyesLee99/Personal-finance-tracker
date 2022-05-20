@@ -4,10 +4,10 @@
 */
 
 * {
-padding: 0;
-margin: 0;
-text-decoration: none;
-list-style: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
 }
 
 body {
@@ -20,18 +20,18 @@ body {
     
 }
 #input, #income_total, #spending_total, #currency_base, #input_box, #adds {
-    border: 3px solid black;
     width: 150px;
     height: 150px;
     justify-content: center;
     margin: 10px;
     border-radius: 10px;
     padding: 50px;
+    color:#1a6293;
+    box-shadow: 1px 1px 2px rgb(0 0 0 / 13%);
 }
 
 #input_box, #adds {
     text-align: center;
-    display: none;
 }
 
 
@@ -163,7 +163,7 @@ a.active, a:hover {
 }
 
 .btn {
-    border: 1px solid #3498db;
+    border: white;
     background: none;
     padding: 10px 20px;
     font-size: 20px;
@@ -172,13 +172,14 @@ a.active, a:hover {
     transition: 0.8s;
     position: relative;
     overflow: hidden;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 23%);
 }
 
 .btn1, .btn2 {
     color: #3498db;
 }
 
-.btn1:hover, .btn2:hover {
+.btn1:hover, .btn2:hover  {
     color: #fff;
 }
 
@@ -198,7 +199,7 @@ a.active, a:hover {
     border-radius: 0 0 50% 50%;
 }
 
-.btn1:hover::before, .btn2:hover::before {
+.btn1:hover::before, .btn2:hover::before{
     height: 180%;
 }
 
@@ -208,15 +209,27 @@ a.active, a:hover {
 
 
 /*gotten help from https://www.youtube.com/watch?v=p9qBEq-YRSc*/
+#input_box {
+    z-index: 2;
+}
+
 #input_box, #adds {
     max-width: 300px;
-    max-height: 500px;
+    max-height: 300px;
     width: 100%;
     height: 100%;
     margin: 20px auto;
-    padding: 30px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+    padding: 15px;
+    box-shadow: 1px 1px 2px rgb(0 0 0 / 13%);
     border: none;
+    background-color: white;
+    position: fixed;
+}
+
+#input_box>a {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #input_box> h2, #adds > h2 {
@@ -293,8 +306,16 @@ a.active, a:hover {
 }
 
 .forms {
-    display: flex;
-    justify-content: space-between;
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background: rgba(255,255,255,0.5);
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .total_amount{
@@ -303,3 +324,75 @@ a.active, a:hover {
 
 }
 
+#input_box > a {
+    background-color: white;
+}
+
+#close {
+    cursor:pointer;
+}
+
+#currency_base > div > select {
+    width: 100%;
+    color: #1a6293;
+    border-color:#1a6293;
+}
+
+#currency_base {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+}
+
+#changebtn {
+    margin-top: 10px;
+    height: 25px;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    color: #1a6293;
+    border: white;
+    cursor: pointer;
+    box-shadow: 1px 2px 3px rgb(0 0 0 / 23%);
+}
+
+#currency_base > div {
+    justify-content: center;
+    text-align: center;
+}
+
+#input_box input, #input_box button, #input_box select {
+    color:#1a6293;
+}
+
+/*Checkbox */
+
+.checkbox, #select-all {
+    width:15px;
+    height: 15px;
+}
+
+#bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+#outer-container {
+    display: flex;
+    justify-content: center;
+}
+
+#bottom-buttons .btn {
+    margin:0;
+}
+
+#down-arrow, #up-arrow {
+    cursor: pointer;
+}
+
+#up-arrow {
+    display: none;
+}
